@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@ComponentScan(basePackages = "hei.tp06.web.controller")
+@ComponentScan(basePackages = {"hei.tp06.web.controller"})
 @ImportResource({"classpath:META-INF/cxf/cxf.xml"})
 public class WSConfig {
 

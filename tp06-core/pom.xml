@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>tp06-assets</artifactId>
+        <groupId>hei.2017</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../tp06-assets/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>tp06-core</artifactId>
+
+
+    <dependencies>
+
+        <!-- "entitymanager Permet le support de JSR 220 JPA par le module Core de Hibernate" -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.1.3.Final</version>
+        </dependency>
+
+        <!-- driver de connexion à la BDD -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.40</version>
+        </dependency>
+
+        <!-- "BoneCP is a fast, free, open-source, Java database connection pool (JDBC Pool) library" -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+            <version>0.8.0.RELEASE</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

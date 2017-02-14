@@ -1,6 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../tp06-core</module>
+    </modules>
     <parent>
         <groupId>hei.2017</groupId>
         <artifactId>tp06</artifactId>
@@ -9,6 +13,21 @@
     <artifactId>tp06-assets</artifactId>
 
     <dependencies>
+
+
+        <!-- "Spring Data JPA makes it easy to easily implement JPA based repositories" -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.10.6.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.webjars</groupId>
