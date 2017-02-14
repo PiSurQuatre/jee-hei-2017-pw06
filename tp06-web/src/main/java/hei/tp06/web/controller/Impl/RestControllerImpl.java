@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -38,8 +39,13 @@ public class RestControllerImpl implements RestController {
 
     @POST
     @Path("/evenements")
-    public void postEvenements(Evenement evenement) {
+    @Consumes("application/json")
+    @Override
+    public Response postEvenements(Evenement evenement) {
+
         evenemenentService.save(evenement);
+        return Response.status(201).build();
+
     }
 
 }

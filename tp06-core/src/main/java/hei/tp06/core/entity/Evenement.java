@@ -11,17 +11,17 @@ public class Evenement
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    private Timestamp start;
+    public Timestamp start;
 
-    private Timestamp end;
+    public Timestamp end;
 
-    private String title;
+    public String title;
 
-    private String color;
+    public String color;
 
-    private String description;
+    public String description;
 
     public Evenement(){};
 

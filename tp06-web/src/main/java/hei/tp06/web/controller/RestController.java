@@ -5,6 +5,7 @@ import hei.tp06.core.entity.Evenement;
 import javax.inject.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Named
@@ -21,5 +22,6 @@ public interface RestController {
 
     @POST
     @Path("/evenements")
-    void postEvenements(Evenement evenement);
+    @Consumes("application/json")
+    Response postEvenements(Evenement evenement);
 }
