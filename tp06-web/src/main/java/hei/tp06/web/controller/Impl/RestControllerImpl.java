@@ -2,10 +2,15 @@ package hei.tp06.web.controller.Impl;
 
 import hei.tp06.core.entity.Evenement;
 import hei.tp06.core.service.EvenementService;
+import hei.tp06.core.service.Impl.EvenementServiceImpl;
 import hei.tp06.web.controller.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,33 +24,48 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestControllerImpl implements RestController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EvenementServiceImpl.class);
+
     @Inject
     private EvenementService evenemenentService;
 
     @GET
     @Path("/evenements")
-    @Override
     public List<Evenement> getEvenements()
     {
+        LOGGER.debug("Requête GET sur /evenements");
         return evenemenentService.findAll();
     }
 
     @GET
     @Path("/evenements/{idEvent}")
-    @Override
     public Evenement getEvenement(@PathParam("idEvent") Long id) {
+        LOGGER.debug("Requête GET sur /evenements/{idEvent}");
         return evenemenentService.findOneById(id);
     }
 
     @POST
     @Path("/evenements")
     @Consumes("application/json")
-    @Override
     public Response postEvenements(Evenement evenement) {
-
+        LOGGER.debug("Requête POST sur /evenements");
         evenemenentService.save(evenement);
         return Response.status(201).build();
 
     }
+
+    @POST
+    @Path("/evenements/delete")
+    //@Consumes(value = {org.springframework.http.MediaType.APPLICATION_JSON_VALUE})
+    //@Consumes("application/json")
+    public Response deleteEvenements(HttpServletRequest request) {
+        LOGGER.debug("Requête DELETE sur /evenements/delete");
+        String id = request.getParameter("idEvent");
+        //J'abandonne: https://jira.spring.io/browse/SPR-14393
+        if(null!=evenemenentService.findOneById(Long.valueOf(id)))
+            evenemenentService.delete(Long.valueOf(id));
+        return Response.status(201).build();
+    }
+
 
 }

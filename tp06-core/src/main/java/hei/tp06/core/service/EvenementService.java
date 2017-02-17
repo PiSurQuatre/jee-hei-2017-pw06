@@ -20,4 +20,6 @@ public interface EvenementService {
     Evenement findOneByTitle(String title);
 
     void save(Evenement event);
+
+    void delete(Long id);
 }

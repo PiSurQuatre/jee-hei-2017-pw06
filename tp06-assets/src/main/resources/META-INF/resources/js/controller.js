@@ -50,7 +50,19 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig,EvenementsWS) {
     $scope.alertOnEventClick = function( date, jsEvent, view){
         //$scope.alertMessage = (date.title + ' was clicked ');
         EvenementsWS.get({id:date.id}).$promise.then(function(data){
-            alert(data.description);
+
+
+            //alert(data.description);
+            var dialog = bootbox.dialog({
+                title: data.title,
+                message:    '<div class="row">'+
+                            '<p class="text-center">'+data.description+'</p>'+
+                            '<button onclick="effacerEvenement("'+data.id+')"></button>'+
+                            '</div>'
+            });
+
+
+
         });
     };
     /* alert on Drop */
