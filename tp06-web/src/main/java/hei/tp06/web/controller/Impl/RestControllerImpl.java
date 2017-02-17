@@ -54,16 +54,15 @@ public class RestControllerImpl implements RestController {
 
     }
 
-    @POST
-    @Path("/evenements/delete")
+    @DELETE
+    @Path("/evenements/delete/{idEvent}")
     //@Consumes(value = {org.springframework.http.MediaType.APPLICATION_JSON_VALUE})
     //@Consumes("application/json")
-    public Response deleteEvenements(HttpServletRequest request) {
-        LOGGER.debug("Requête DELETE sur /evenements/delete");
-        String id = request.getParameter("idEvent");
+    public Response deleteEvenements(@PathParam("idEvent") Long id) {
+        LOGGER.debug("Requête DELETE sur /evenements/{idEvent}");
         //J'abandonne: https://jira.spring.io/browse/SPR-14393
-        if(null!=evenemenentService.findOneById(Long.valueOf(id)))
-            evenemenentService.delete(Long.valueOf(id));
+        if(null!=evenemenentService.findOneById(id))
+            evenemenentService.delete(id);
         return Response.status(201).build();
     }
 

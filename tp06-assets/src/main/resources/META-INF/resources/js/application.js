@@ -7,18 +7,17 @@ angularApp.factory('EvenementsWS', ['$resource', function ($resource) {
         });
 }]);
 
-
-
-
 function effacerEvenement( id){
     $.ajax({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        type: 'post',
-        url: '/api/evenements/delete',
-        data: {idEvent: id},
-        success: bootbox.hideAll()
+        type: 'delete',
+        url: '/api/evenements/delete/'+id,
+        success: function(){
+            bootbox.hideAll();
+            location.reload(); // ok, ce n'est pas très propre mais je n'ai pas le temps de faire mieux.
+        }
     });
 }
